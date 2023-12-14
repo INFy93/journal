@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone' => ['required'],
+            'password' => ['nullable', 'string'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Необходимо ввести имя пользователя',
+            'email.required' => 'Необходимо ввести e-mail',
+            'phone.required' => 'Необходимо ввести телефон',
         ];
     }
 }

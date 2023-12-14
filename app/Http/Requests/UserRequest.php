@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
             'name' => ['required'],
             'email' => ['required'],
             'phone' => ['required'],
-            'password' => ['nullable', 'string'],
+            'password' => ['nullable', 'string', 'min:8'],
         ];
     }
 
@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
             'name.required' => 'Необходимо ввести имя пользователя',
             'email.required' => 'Необходимо ввести e-mail',
             'phone.required' => 'Необходимо ввести телефон',
+            'password.min' => 'Минимальная длина пароля 8 символов'
         ];
     }
 }

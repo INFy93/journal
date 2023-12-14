@@ -1,6 +1,6 @@
 <template>
     <header-title>Пользователи</header-title>
-    <updateUser ref="changeUser"></updateUser>
+    <updateUser ref="changeUser" @updateUsers="getUsers"></updateUser>
     <div class="hidden overflow-auto md:block">
         <div class="flex flex-wrap md:flex-nowrap md:space-x-3">
             <div class="w-full mt-2 mb-6 md:mb-0">
@@ -31,7 +31,7 @@
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ user.last_login_at == null ?
                                 'Не заходил' : formatDate(user.last_login_at) + ' (' + (user.last_login_ip) + ')' }}</td>
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                                <div class="flex space-x-2">
+                                <div class="flex space-x-2" v-if="currentUser.id != user.id">
                                     <svg @click="editUser(user.id)" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                         class="w-6 h-6 cursor-pointer">
@@ -62,7 +62,7 @@ import useHelpers from '../../../composables/helpers/helper';
 
 export default {
     setup() {
-        const { getUsers, users } = useUsers();
+        const { getUsers, users, currentUser } = useUsers();
         const { formatDate } = useHelpers();
 
         const changeUser = ref(null);
@@ -77,6 +77,8 @@ export default {
 
         return {
             users,
+            currentUser,
+            getUsers,
             changeUser,
             formatDate,
             editUser

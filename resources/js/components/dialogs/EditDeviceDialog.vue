@@ -15,7 +15,7 @@
 
             <div class="fixed inset-0 overflow-y-auto">
                 <div
-                    class="flex min-h-full items-center justify-center p-4 text-center"
+                    class="flex items-center justify-center min-h-full p-4 text-center"
                 >
                     <TransitionChild
                         as="template"
@@ -27,7 +27,7 @@
                         leave-to="opacity-0 scale-95"
                     >
                         <DialogPanel
-                            class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                            class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
                         >
                             <DialogTitle
                                 as="h3"
@@ -39,7 +39,7 @@
                                 <div
                                     v-for="(v, k) in deviceErrors"
                                     :key="k"
-                                    class="w-full px-3 mb-6 bg-red-500 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0"
+                                    class="w-full px-3 py-2 pr-0 mb-6 font-bold text-white bg-red-500 rounded shadow-lg"
                                 >
                                     <p v-for="error in v" :key="error" class="text-sm">
                                         {{ error }}
@@ -56,7 +56,7 @@
                                     <input
                                         id="name"
                                         v-model="device.device_name"
-                                        class="block mt-1 w-full md:w-2/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm md:w-2/3 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                         name="name"
                                         type="text"
                                     />
@@ -66,7 +66,7 @@
                             <div class="mt-4">
                                 <button
                                     type="button"
-                                    class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                    class="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                     @click="saveDevice(device.id, device.node.id)"
                                 >
                                    Изменить

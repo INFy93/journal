@@ -27,7 +27,8 @@
                             </td>
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ user.isAdmin ? 'Администратор' :
                                 'Пользователь' }}</td>
-                            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">давно</td>
+                            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ user.last_login_at == null ?
+                                'Не заходил' : formatDate(user.last_login_at) + ' (' + (user.last_login_ip) + ')' }}</td>
                             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
                                 <div class="flex space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -55,18 +56,20 @@
 <script>
 import { onMounted } from 'vue';
 import useUsers from '../../../composables/users/users.js';
+import useHelpers from '../../../composables/helpers/helper';
 
 export default {
     setup() {
         const { getUsers, users } = useUsers();
+        const { formatDate } = useHelpers();
 
         onMounted(() => {
             getUsers();
-            console.log(users.value)
         })
 
         return {
-            users
+            users,
+            formatDate
         }
     }
 }

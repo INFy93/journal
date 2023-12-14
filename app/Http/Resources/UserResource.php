@@ -18,6 +18,10 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'isAdmin' => $this->isAdmin(),
+            $this->mergeWhen($request->user()->isAdmin(), [
+                'email' => $this->email,
+                'phone' => $this->phone
+            ]),
         ];
     }
 }

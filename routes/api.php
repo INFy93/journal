@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'v1'], function () {
 Route::apiResource('records', \App\Http\Controllers\Api\RecordsController::class);
 
 Route::apiResource('devices', \App\Http\Controllers\Api\DeviceController::class);

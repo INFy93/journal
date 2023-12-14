@@ -35,7 +35,7 @@ export default function useCities() {
     const updateCity = async (id) => {
         errors.value = "";
         try {
-            await axios.put("/api/city/v1/" + id, city.value);
+            await axios.put("/api/v1/city/" + id, city.value);
             toast.success("Пункт успешно обновлен.");
         } catch (e) {
             if (e.response.status === 422) {

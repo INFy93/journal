@@ -113,6 +113,138 @@
                     }
                 }
             }
+        },
+        "/api/v1/devices": {
+            "get": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Get a list of devices",
+                "operationId": "cd1f716e14d12cccdf5417a7fbb59a37",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Post new device to database",
+                "operationId": "b8f03d6be2d46bd5a8e5ebb8eeb4f573",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/devices/{device_id}": {
+            "get": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Get single device",
+                "operationId": "afcc7d3d68a9a3ba1f63a47994800567",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Update specific device",
+                "operationId": "14196a55516caf70bec0a72707ecbcd2",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Delete specific device",
+                "operationId": "5b486064db225d77d12236746504b54e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/v1/device/{node_id}": {
+            "get": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Get single device by node ID",
+                "operationId": "824c8a5d4872c268cb5b5b49ace4d85f",
+                "parameters": [
+                    {
+                        "name": "node_id",
+                        "in": "path",
+                        "description": "Node ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
         }
     }
 }

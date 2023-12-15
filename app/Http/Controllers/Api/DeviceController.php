@@ -11,16 +11,28 @@ use Illuminate\Http\Request;
 class DeviceController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/devices",
+ *     summary="Get a list of devices",
+ *     tags={"Device"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function index()
     {
         return DeviceResource::collection(Device::all());
     }
-
     /**
-     * Store a newly created resource in storage.
-     */
+ * @OA\Post(
+ *     path="/api/v1/devices",
+ *     summary="Post new device to database",
+ *     tags={"Device"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function store(DeviceRequest $request): DeviceResource
     {
         $device = Device::create($request->validated());
@@ -29,8 +41,21 @@ class DeviceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/devices/{device_id}",
+ *     summary="Get single device",
+ *     tags={"Device"},
+ *     @OA\Parameter(
+ *         description="Device unique id",
+ *         in="path",
+ *         name="device_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function show($device): DeviceResource
     {
         $data = Device::where('id', $device)
@@ -39,9 +64,23 @@ class DeviceController extends Controller
 
         return new DeviceResource($data);
     }
+
     /**
-     * Display the specified resource by node_id.
-     */
+ * @OA\Get(
+ *     path="/api/v1/device/{node_id}",
+ *     summary="Get single device by node ID",
+ *     tags={"Device"},
+ *     @OA\Parameter(
+ *         description="Node ID",
+ *         in="path",
+ *         name="node_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function getDevices($node_id): DeviceResource
     {
         $data = Device::
@@ -50,9 +89,22 @@ class DeviceController extends Controller
         return new DeviceResource($data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+        /**
+ * @OA\Put(
+ *     path="/api/v1/devices/{device_id}",
+ *     summary="Update specific device",
+ *     tags={"Device"},
+ *     @OA\Parameter(
+ *         description="Device unique id",
+ *         in="path",
+ *         name="device_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function update(DeviceRequest $request, Device $device): DeviceResource
     {
         $device->update($request->validated());
@@ -61,8 +113,14 @@ class DeviceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+ * @OA\Delete(
+ *     path="/api/v1/devices/{device_id}",
+ *     summary="Delete specific device",
+ *     tags={"Device"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function destroy(Device $device)
     {
         //

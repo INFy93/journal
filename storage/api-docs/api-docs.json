@@ -379,6 +379,123 @@
                     }
                 }
             }
+        },
+        "/api/v1/records": {
+            "get": {
+                "tags": [
+                    "Record"
+                ],
+                "summary": "Get all records with devices, nodes, users and cities. Using filter 'selectedNode' (comes from request) will show devices belonging to specific node",
+                "operationId": "3e63abc337125bc233396b79310b9f6b",
+                "parameters": [
+                    {
+                        "name": "selectedNode",
+                        "in": "query",
+                        "description": "Node ID",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Record"
+                ],
+                "summary": "Post new record to database",
+                "operationId": "375596d64ee1902a23ae726bff26a2a1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/records/{record_id}": {
+            "get": {
+                "tags": [
+                    "Record"
+                ],
+                "summary": "Get a single record",
+                "operationId": "273146e41b5bdcac6e8ea36bb95970f5",
+                "parameters": [
+                    {
+                        "name": "record_id",
+                        "in": "path",
+                        "description": "Record unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Record"
+                ],
+                "summary": "Update a single record",
+                "operationId": "a7a7372b5f8409968553745099b3b552",
+                "parameters": [
+                    {
+                        "name": "record_id",
+                        "in": "path",
+                        "description": "Record unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Record"
+                ],
+                "summary": "Delete a single record",
+                "operationId": "04899f2c0d5b1f1541f32abc288b45c4",
+                "parameters": [
+                    {
+                        "name": "record_id",
+                        "in": "path",
+                        "description": "Record unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
         }
     }
 }

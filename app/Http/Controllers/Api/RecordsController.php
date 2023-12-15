@@ -11,8 +11,20 @@ use Illuminate\Http\Request;
 class RecordsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/records",
+ *     summary="Get all records with devices, nodes, users and cities. Using filter 'selectedNode' (comes from request) will show devices belonging to specific node",
+ *     tags={"Record"},
+ *     @OA\Parameter(
+ *         description="Node ID",
+ *         in="query",
+ *         name="selectedNode",
+ *         required=false
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function index()
     {
         //use some filters to code a lot of coding and different methods
@@ -28,9 +40,16 @@ class RecordsController extends Controller
         return RecordsResource::collection($records);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   /**
+ * @OA\Post(
+ *     path="/api/v1/records",
+ *     summary="Post new record to database",
+ *     tags={"Record"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function store(RecordRequest $request): RecordsResource
     {
         $record = Record::create($request->validated());
@@ -39,16 +58,41 @@ class RecordsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/records/{record_id}",
+ *     summary="Get a single record",
+ *     tags={"Record"},
+ *     @OA\Parameter(
+ *         description="Record unique id",
+ *         in="path",
+ *         name="record_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function show(Record $record): RecordsResource
     {
         return new RecordsResource($record);
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+ * @OA\Put(
+ *     path="/api/v1/records/{record_id}",
+ *     summary="Update a single record",
+ *     tags={"Record"},
+ *     @OA\Parameter(
+ *         description="Record unique id",
+ *         in="path",
+ *         name="record_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function update(RecordRequest $request, Record $record): RecordsResource
     {
         $record->update($request->validated());
@@ -57,8 +101,20 @@ class RecordsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+ * @OA\Delete(
+ *     path="/api/v1/records/{record_id}",
+ *     summary="Delete a single record (not in use)",
+ *     tags={"Record"},
+ *     @OA\Parameter(
+ *         description="Record unique id",
+ *         in="path",
+ *         name="record_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function destroy(Record $record)
     {
         //

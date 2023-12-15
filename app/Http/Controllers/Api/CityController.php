@@ -14,7 +14,7 @@ class CityController extends Controller
 {
     /**
  * @OA\Get(
- *     path="/api/v1/citiy",
+ *     path="/api/v1/city",
  *     summary="Get a list of cities",
  *     tags={"City"},
  *     @OA\Response(response=200, description="Successful operation"),
@@ -27,12 +27,12 @@ class CityController extends Controller
     }
 
     /**
- * @OA\Get(
- *     path="/api/v1/citiy",
+ * @OA\Post(
+ *     path="/api/v1/city",
  *     summary="Post new city to database",
  *     tags={"City"},
  *     @OA\Response(response=200, description="Successful operation"),
- *     @OA\Response(response=400, description="Invalid request")
+ *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response=422, description="Validation error")
  * )
  */
@@ -44,25 +44,42 @@ class CityController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/city/{city_id}",
+ *     summary="Get single city",
+ *     tags={"City"},
+ *     @OA\Parameter(
+ *         description="City unique id",
+ *         in="path",
+ *         name="city_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function show(City $city): CityResource
     {
         return new CityResource($city);
 
     }
 
-    public function getCity($id)
-    {
-
-        $city = City::where('id', $id)->first();
-
-        return $city;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+        /**
+ * @OA\Put(
+ *     path="/api/v1/city/{city_id}",
+ *     summary="Update specific city",
+ *     tags={"City"},
+ *     @OA\Parameter(
+ *         description="City unique id",
+ *         in="path",
+ *         name="city_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function update(CityRequest $request, City $city): CityResource
     {
         $city->update($request->validated());
@@ -70,9 +87,21 @@ class CityController extends Controller
         return new CityResource($city);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        /**
+ * @OA\Delete(
+ *     path="/api/v1/city/{city_id}",
+ *     summary="Delete specific city",
+ *     tags={"City"},
+ *     @OA\Parameter(
+ *         description="City unique id",
+ *         in="path",
+ *         name="city_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function destroy(City $city)
     {
         //

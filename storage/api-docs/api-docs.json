@@ -1,0 +1,118 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Journal API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/city": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Get a list of cities",
+                "operationId": "b5b4fbe28cc29727c05ef4263a1f4594",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Post new city to database",
+                "operationId": "0965c46cf16257eb1e9412c262e95320",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/city/{city_id}": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Get single city",
+                "operationId": "ac14856a7fd8ced0ae7664ce56afcae5",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "description": "City unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Update specific city",
+                "operationId": "2ff5499bf7fa92c26b8df5071bb3b925",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "description": "City unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Delete specific city",
+                "operationId": "1262a14cfe1ce168b0e7519cf4bd02a0",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "description": "City unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        }
+    }
+}

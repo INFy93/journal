@@ -245,6 +245,140 @@
                     }
                 }
             }
+        },
+        "/api/v1/nodes": {
+            "get": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Get a list of nodes",
+                "operationId": "bf4f4e44160909866374149e373d21e2",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Post new node to database",
+                "operationId": "b3d1f5bd09b2efac3a424d92a4ce57cb",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/nodes/{node_id}": {
+            "get": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Get a single node",
+                "operationId": "b4599b251822b6097ce392040aa31043",
+                "parameters": [
+                    {
+                        "name": "node_id",
+                        "in": "path",
+                        "description": "Node unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Update a single node",
+                "operationId": "40725e7006e347fff7826118e446da2e",
+                "parameters": [
+                    {
+                        "name": "node_id",
+                        "in": "path",
+                        "description": "Node unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Delete a single node",
+                "operationId": "b6b016f54b1009d5df5f6360a96fc019",
+                "parameters": [
+                    {
+                        "name": "node_id",
+                        "in": "path",
+                        "description": "Node unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/v1/node/{city_id}": {
+            "get": {
+                "tags": [
+                    "Node"
+                ],
+                "summary": "Get all nodes in specific city",
+                "operationId": "8cdc4a5391ea5c9e0fcd164a282cd2b1",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "description": "City unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
         }
     }
 }

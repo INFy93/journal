@@ -11,16 +11,29 @@ use Illuminate\Http\Request;
 class NodeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/nodes",
+ *     summary="Get a list of nodes",
+ *     tags={"Node"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function index()
     {
         return NodeResource::collection(Node::all());
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+ * @OA\Post(
+ *     path="/api/v1/nodes",
+ *     summary="Post new node to database",
+ *     tags={"Node"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function store(NodeRequest $request): NodeResource
     {
         $node = Node::create($request->validated());
@@ -29,16 +42,42 @@ class NodeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/nodes/{node_id}",
+ *     summary="Get a single node",
+ *     tags={"Node"},
+ *     @OA\Parameter(
+ *         description="Node unique id",
+ *         in="path",
+ *         name="node_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function show(Node $node): NodeResource
     {
 
         return new NodeResource($node);
     }
-    /**
-     * Display the specified resource by city_id.
-     */
+
+        /**
+ * @OA\Get(
+ *     path="/api/v1/node/{city_id}",
+ *     summary="Get all nodes in specific city",
+ *     tags={"Node"},
+ *     @OA\Parameter(
+ *         description="City unique id",
+ *         in="path",
+ *         name="city_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function getNode($city_id): NodeResource
     {
         $data = Node::where('city_id', $city_id)->get();
@@ -46,8 +85,20 @@ class NodeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+ * @OA\Put(
+ *     path="/api/v1/nodes/{node_id}",
+ *     summary="Update a single node",
+ *     tags={"Node"},
+ *     @OA\Parameter(
+ *         description="Node unique id",
+ *         in="path",
+ *         name="node_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function update(NodeRequest $request, Node $node): NodeResource
     {
         $node->update($request->validated());
@@ -56,8 +107,20 @@ class NodeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+ * @OA\Delete(
+ *     path="/api/v1/nodes/{node_id}",
+ *     summary="Delete a single node",
+ *     tags={"Node"},
+ *     @OA\Parameter(
+ *         description="Node unique id",
+ *         in="path",
+ *         name="node_id",
+ *         required=true
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function destroy(Node $node)
     {
         //

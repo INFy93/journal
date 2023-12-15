@@ -115,7 +115,7 @@ class DeviceController extends Controller
     /**
  * @OA\Delete(
  *     path="/api/v1/devices/{device_id}",
- *     summary="Delete specific device",
+ *     summary="Delete specific device (not in use)",
  *     tags={"Device"},
  *     @OA\Response(response=200, description="Successful operation"),
  *     @OA\Response(response=400, description="Invalid request")

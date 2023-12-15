@@ -90,7 +90,7 @@ class CityController extends Controller
         /**
  * @OA\Delete(
  *     path="/api/v1/city/{city_id}",
- *     summary="Delete specific city",
+ *     summary="Delete specific city (not in use)",
  *     tags={"City"},
  *     @OA\Parameter(
  *         description="City unique id",

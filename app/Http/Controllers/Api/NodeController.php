@@ -109,7 +109,7 @@ class NodeController extends Controller
     /**
  * @OA\Delete(
  *     path="/api/v1/nodes/{node_id}",
- *     summary="Delete a single node",
+ *     summary="Delete a single node (not in use)",
  *     tags={"Node"},
  *     @OA\Parameter(
  *         description="Node unique id",

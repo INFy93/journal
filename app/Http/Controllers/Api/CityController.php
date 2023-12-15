@@ -13,16 +13,29 @@ use Illuminate\Support\Facades\DB;
 class CityController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/v1/citiy",
+ *     summary="Get a list of cities",
+ *     tags={"City"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ * )
+ */
     public function index()
     {
         return CityResource::collection(City::all());
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+ * @OA\Get(
+ *     path="/api/v1/citiy",
+ *     summary="Post new city to database",
+ *     tags={"City"},
+ *     @OA\Response(response=200, description="Successful operation"),
+ *     @OA\Response(response=400, description="Invalid request")
+ *     @OA\Response(response=422, description="Validation error")
+ * )
+ */
     public function store(CityRequest $request): CityResource
     {
         $city = City::create($request->validated());

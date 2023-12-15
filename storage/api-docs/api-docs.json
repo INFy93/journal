@@ -94,7 +94,7 @@
                 "tags": [
                     "City"
                 ],
-                "summary": "Delete specific city",
+                "summary": "Delete specific city (not in use)",
                 "operationId": "1262a14cfe1ce168b0e7519cf4bd02a0",
                 "parameters": [
                     {
@@ -206,7 +206,7 @@
                 "tags": [
                     "Device"
                 ],
-                "summary": "Delete specific device",
+                "summary": "Delete specific device (not in use)",
                 "operationId": "5b486064db225d77d12236746504b54e",
                 "responses": {
                     "200": {
@@ -332,7 +332,7 @@
                 "tags": [
                     "Node"
                 ],
-                "summary": "Delete a single node",
+                "summary": "Delete a single node (not in use)",
                 "operationId": "b6b016f54b1009d5df5f6360a96fc019",
                 "parameters": [
                     {
@@ -477,13 +477,109 @@
                 "tags": [
                     "Record"
                 ],
-                "summary": "Delete a single record",
+                "summary": "Delete a single record (not in use)",
                 "operationId": "04899f2c0d5b1f1541f32abc288b45c4",
                 "parameters": [
                     {
                         "name": "record_id",
                         "in": "path",
                         "description": "Record unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/v1/stuff": {
+            "post": {
+                "tags": [
+                    "Stuff"
+                ],
+                "summary": "Post new stuff to database",
+                "operationId": "e43094ade767bd2ae2a5ac1b6f4a789c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/stuff/{device_id}": {
+            "get": {
+                "tags": [
+                    "Stuff"
+                ],
+                "summary": "Get a single stuff using device ID",
+                "operationId": "af232e8a59a04d01340626b2d2f043d1",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/v1/stuff/{stuff_id}": {
+            "put": {
+                "tags": [
+                    "Stuff"
+                ],
+                "summary": "Update a single stuff",
+                "operationId": "5cf2e535610dff9afd59158aceb735d6",
+                "parameters": [
+                    {
+                        "name": "stuff_id",
+                        "in": "path",
+                        "description": "Stuff unique id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Stuff"
+                ],
+                "summary": "Delete a single stuff (not in use)",
+                "operationId": "3b2e867acbe4be2650bcb269600552e6",
+                "parameters": [
+                    {
+                        "name": "stuff_id",
+                        "in": "path",
+                        "description": "Stuff unique id",
                         "required": true
                     }
                 ],

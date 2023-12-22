@@ -5,15 +5,15 @@
     <div class="p-5 bg-gray-100 rounded-xl">
         <div class="flex flex-wrap md:flex-nowrap md:space-x-3">
             <div class="w-full mb-6 md:w-1/3 md:mb-0">
-                <select name="period" id="period"
+                <select name="city" id="city" v-on:change="getNode($event.target.value)"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option disabled value="">Выберите город</option>
-                    <option v-for="city in cities" :key="city.id" :value="city.id" @click="getNode(city.id)">{{
+                    <option v-for="city in cities" :key="city.id" :value="city.id">{{
                         city.city_name }}</option>
                 </select>
             </div>
             <div class="w-full mb-6 md:w-1/3 md:mb-0" v-if="Object.keys(nodes).length">
-                <select name="period" id="period" v-model="selectedNode"
+                <select name="node" id="node" v-model="selectedNode"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option disabled value="">Выберите узел</option>
                     <option v-for="node in nodes" :key="node.id" :value="node.id" @click="nodeName = node.node_name">{{

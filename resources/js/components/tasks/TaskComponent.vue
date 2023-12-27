@@ -14,10 +14,12 @@
             </div>
             <div class="w-full mb-6 md:w-1/3 md:mb-0" v-if="Object.keys(nodes).length">
                 <select name="node" id="node" v-model="selectedNode"
+                    v-on:change="nodeName = $event.target.options[$event.target.options.selectedIndex].getAttribute('node')"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option disabled value="">Выберите узел</option>
-                    <option v-for="node in nodes" :key="node.id" :value="node.id" @click="nodeName = node.node_name">{{
-                        node.node_name }}</option>
+                    <option v-for="node in nodes" :key="node.id" :node="node.node_name" :value="node.id">
+                        {{
+                            node.node_name }}</option>
                 </select>
             </div>
 
@@ -102,7 +104,7 @@
                     <span class="font-semibold">Внимание!</span> Нет записей по данной выборке.
                 </div>
             </div>
-            <div class="flex space-x-2">
+            <div class="flex-col space-y-2">
                 <router-link :to="{ name: 'tasks.add', params: { id: selectedNode } }" v-if="selectedNode"
                     class="update-button">
                     <button

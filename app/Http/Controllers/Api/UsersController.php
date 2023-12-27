@@ -11,7 +11,13 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/v1/users",
+     *     summary="Get a list of users",
+     *     tags={"User"},
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request")
+     * )
      */
     public function index()
     {
@@ -19,7 +25,14 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/api/v1/users",
+     *     summary="Post new user to database (not in use yet)",
+     *     tags={"User"},
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=422, description="Validation error")
+     * )
      */
     public function store(Request $request)
     {
@@ -27,7 +40,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/api/v1/users/{user_id}",
+     *     summary="Get a single user",
+     *     tags={"User"},
+     *     @OA\Parameter(
+     *         description="User unique id",
+     *         in="path",
+     *         name="user_id",
+     *         required=true
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request")
+     * )
      */
     public function show(User $user): UserResource
     {
@@ -35,7 +60,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/api/v1/users/{user}",
+     *     summary="Update a single user",
+     *     tags={"User"},
+     *     @OA\Parameter(
+     *         description="User unique id",
+     *         in="path",
+     *         name="user_id",
+     *         required=true
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request")
+     * )
      */
     public function update(UserRequest $request, User $user): UserResource
     {
@@ -45,7 +82,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/api/v1/users/{user}",
+     *     summary="Delete a single user (not in use)",
+     *     tags={"User"},
+     *     @OA\Parameter(
+     *         description="User unique id",
+     *         in="path",
+     *         name="user_id",
+     *         required=true
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request")
+     * )
      */
     public function destroy(User $user)
     {

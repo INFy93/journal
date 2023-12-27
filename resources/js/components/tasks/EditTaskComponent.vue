@@ -37,8 +37,14 @@
                     <label for="time" class="block text-sm font-medium text-gray-700">Задача</label>
                     <textarea v-model="record.goals" id="message" rows="4"
                         class="block  mt-1 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Описание работ..."></textarea>
+                        placeholder="Описание задач..."></textarea>
 
+                </div>
+                <div class="w-full px-3 mt-2 mb-6 md:w-2/3 md:mb-0" v-if="record.goals">
+                    <button @click.prevent="record.goals = ''"
+                        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md ring-gray-300 hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25">
+                        Выполнил задачу
+                    </button>
                 </div>
                 <div class="w-full px-3 mt-2 mb-6 md:w-2/3 md:mb-0">
                     <label for="time" class="block text-sm font-medium text-gray-700">Описание работ*</label>

@@ -7,7 +7,7 @@
             <div class="w-full mb-6 md:w-1/3 md:mb-0">
                 <select name="city" id="city" v-on:change="getNode($event.target.value)"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                    <option disabled value="">Выберите город</option>
+                    <option disabled value="" selected>Выберите город</option>
                     <option v-for="city in cities" :key="city.id" :value="city.id">{{
                         city.city_name }}</option>
                 </select>
@@ -71,7 +71,8 @@
                     <tr :class="[record.goals ? 'bg-green-200' : 'bg-white']" v-for="record in  records.data "
                         :key="record.id">
                         <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-                            <router-link :to="{ name: 'task.edit', params: { id: record.id, node: record.nodes.id } }"
+                            <router-link
+                                :to="{ name: 'task.edit', params: { id: record.id, node: record.nodes.id, device_id: record.devices.id } }"
                                 class="font-bold text-blue-500 hover:underline">{{ record.cities.city_name }}, {{
                                     record.nodes.node_name }}</router-link>
 
@@ -135,7 +136,8 @@
             <div class="p-4 space-y-3 bg-white rounded-lg shadow" v-for=" record  in  records.data " :key="record.id">
                 <div class="flex items-center space-x-2 text-sm">
                     <div>
-                        <router-link :to="{ name: 'task.edit', params: { id: record.id, node: record.nodes.id } }"
+                        <router-link
+                            :to="{ name: 'task.edit', params: { id: record.id, node: record.nodes.id, device_id: record.devices.id } }"
                             class="font-bold text-blue-500 hover:underline">{{ record.nodes.node_name }}</router-link> ({{
                                 record.cities.city_name }})
                     </div>

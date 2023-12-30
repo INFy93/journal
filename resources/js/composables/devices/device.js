@@ -39,13 +39,12 @@ export default function useDevice() {
         }
     };
 
-    const storeStuff = async (id, deviceName, data) => {
+    const storeStuff = async (id, data) => {
         errors.value = "";
         if (isEmpty.value) {
             try {
                 await axios.post("/api/v1/stuff", data);
-                await router.push({ name: "tasks.index" });
-                toast.success("Обновлено устройство: " + deviceName);
+                toast.success("Оборудование успешно добавлено.");
             } catch (e) {
                 if (e.response.status === 422) {
                     errors.value = e.response.data.errors;
@@ -55,8 +54,7 @@ export default function useDevice() {
         } else {
             try {
                 await axios.put("/api/v1/stuff/" + id, data);
-                await router.push({ name: "tasks.index" });
-                toast.success("Обновлено устройство: " + deviceName);
+                toast.success("Оборудование успешно добавлено.");
             } catch (e) {
                 if (e.response.status === 422) {
                     errors.value = e.response.data.errors;

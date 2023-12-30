@@ -29,7 +29,7 @@ const routes = [
         },
     },
     {
-        path: "/task/:id/:node/edit",
+        path: "/task/:id/:node/:device_id/edit",
         name: "task.edit",
         component: EditTaskComponent,
         props: true,

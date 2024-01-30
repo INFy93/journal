@@ -5,7 +5,7 @@
         <div class="flex flex-col justify-between flex-grow overflow-x-hidden overflow-y-auto">
             <ul class="flex flex-col py-4 space-y-1">
                 <li>
-                    <router-link :to="{ name: 'tasks.index' }"
+                    <router-link :to="{ name: 'main.index' }"
                         class="relative flex flex-row items-center pr-6 border-l-4 border-transparent h-11 focus:outline-none hover:bg-green-800 dark:hover:bg-gray-600 text-white-600 hover:text-white hover:border-green-500 dark:hover:border-gray-800">
                         <span class="inline-flex items-center justify-center ml-4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"

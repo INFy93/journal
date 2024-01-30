@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import MainComponent from "../components/main/MainComponent.vue";
 import TaskComponent from "../components/tasks/TaskComponent.vue";
 import AddTaskComponent from "../components/tasks/AddTaskComponent.vue";
 import AddStuffToDevice from "../components/devices/DeviceComponent.vue";
@@ -12,8 +13,17 @@ import useUsers from "../composables/users/users.js";
 const user = useUsers();
 const routes = [
     {
-        path: "/tasks",
+        path: "/main",
+        name: "main.index",
+        component: MainComponent,
+        meta: {
+            title: "Журнал",
+        },
+    },
+    {
+        path: "/tasks/:id/",
         name: "tasks.index",
+        props: true,
         component: TaskComponent,
         meta: {
             title: "Журнал",
@@ -55,7 +65,7 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             if (user.currentUser.is_admin) next();
-            else next("/tasks");
+            else next("/main");
         },
     },
     {
@@ -67,7 +77,7 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             if (user.currentUser.is_admin) next();
-            else next("/tasks");
+            else next("/main");
         },
     },
 ];

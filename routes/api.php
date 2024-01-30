@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RecordsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware' => ['auth'], 'prefix' => 'v1'], function () {
+
 Route::apiResource('records', \App\Http\Controllers\Api\RecordsController::class);
+Route::get('records/node/{node_id}', [RecordsController::class, 'getRecordsByNodeId']);
 
 Route::apiResource('devices', \App\Http\Controllers\Api\DeviceController::class);
 Route::get('device/{node_id}', [\App\Http\Controllers\Api\DeviceController::class, 'getDevices']);

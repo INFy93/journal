@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Заказы
+    Журнал
 @endsection
 
 @section('content')

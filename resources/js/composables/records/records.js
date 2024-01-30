@@ -8,18 +8,11 @@ export default function useRecords() {
     const errors = ref("");
     const router = useRouter();
     const toast = useToast();
-    const selectedNode = ref("");
-    const selectedDevice = ref("");
 
-    const getAllRecords = async (page = 1) => {
-        let response = await axios.get(
-            "/api/v1/records?page=" +
-                page +
-                "&selectedNode=" +
-                selectedNode.value
-        );
+    const getAllRecordsByNode = async (node_id, page = 1) => {
+        let response = await axios.get("/api/v1/records/node/" + node_id);
 
-        records.value = response.data;
+        records.value = response.data.data;
     };
 
     const getRecord = async (id) => {
@@ -55,11 +48,9 @@ export default function useRecords() {
         records,
         record,
         errors,
-        selectedDevice,
-        selectedNode,
+        getAllRecordsByNode,
         getRecord,
         storeRecord,
         updateRecord,
-        getAllRecords,
     };
 }

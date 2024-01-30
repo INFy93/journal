@@ -77,6 +77,16 @@ class RecordsController extends Controller
         return new RecordsResource($record);
     }
 
+    public function getRecordsByNodeId($node_id)
+    {
+        $records = Record::with(['devices', 'nodes', 'users'])
+        ->where('node_id', $node_id)
+        ->orderBy('id', 'desc')
+        ->get();
+
+        return RecordsResource::collection($records);
+    }
+
     /**
  * @OA\Put(
  *     path="/api/v1/records/{record_id}",

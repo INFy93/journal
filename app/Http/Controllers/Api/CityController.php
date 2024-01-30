@@ -23,7 +23,13 @@ class CityController extends Controller
  */
     public function index()
     {
-        return CityResource::collection(City::all());
+        $search_term = request('search', '');
+
+        return CityResource::collection(City::
+        with('nodes', 'stuffs', 'records')
+        ->search(trim($search_term))
+        ->get()
+        );
     }
 
     /**

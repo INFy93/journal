@@ -31,6 +31,7 @@ const options = {
     rtl: false,
 };
 
+import Main from "./components/main/MainComponent.vue";
 import Tasks from "./components/tasks/TaskComponent.vue";
 import HeaderSlot from "./components/UI/elements/HeaderSlot.vue";
 import HeaderLine from "./components/UI/elements/HeaderLine.vue";
@@ -50,6 +51,7 @@ import EditNodeDialog from "./components/dialogs/EditNodeDialog.vue";
 import EditDeviceDialog from "./components/dialogs/EditDeviceDialog.vue";
 import EditUserDialog from "./components/dialogs/EditUserDialog.vue";
 
+app.component("main", Main);
 app.component("tasks", Tasks);
 app.component("header-title", HeaderSlot);
 

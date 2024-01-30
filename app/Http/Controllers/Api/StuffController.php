@@ -52,7 +52,7 @@ class StuffController extends Controller
  */
     public function show($stuff): StuffResource
     {
-        $data = Stuff::where('device_id', $stuff)->first();
+        $data = Stuff::where('node_id', $stuff)->first();
 
         return new StuffResource($data);
     }

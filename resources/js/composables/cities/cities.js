@@ -6,9 +6,10 @@ export default function useCities() {
     const cities = ref([]);
     const city = ref([]);
     const toast = useToast();
+    const search = ref("");
     const errors = ref("");
     const getCities = async () => {
-        let response = await axios.get("/api/v1/city");
+        let response = await axios.get("/api/v1/city?search=" + search.value);
 
         cities.value = response.data.data;
     };
@@ -47,6 +48,7 @@ export default function useCities() {
     return {
         cities,
         city,
+        search,
         errors,
         updateCity,
         getCities,

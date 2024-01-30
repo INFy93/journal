@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if(Auth::check()) {
-        return redirect('/tasks');
+        return redirect('/main');
     } else {
         return view('auth.login');
     }

@@ -82,6 +82,7 @@ class RecordsController extends Controller
         $records = Record::with(['devices', 'nodes', 'users'])
         ->where('node_id', $node_id)
         ->orderBy('id', 'desc')
+        ->limit(20)
         ->get();
 
         return RecordsResource::collection($records);

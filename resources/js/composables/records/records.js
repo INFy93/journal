@@ -9,10 +9,10 @@ export default function useRecords() {
     const router = useRouter();
     const toast = useToast();
 
-    const getAllRecordsByNode = async (node_id, page = 1) => {
-        let response = await axios.get("/api/v1/records/node/" + node_id);
+    const getAllRecordsByNode = async (node_id) => {
+        let response = await axios.get("/api/v1/records/" + node_id + "/node");
 
-        records.value = response.data.data;
+        records.value = response.data;
     };
 
     const getRecord = async (id) => {

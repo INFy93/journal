@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainComponent from "../components/main/MainComponent.vue";
 import TaskComponent from "../components/tasks/TaskComponent.vue";
 import AddTaskComponent from "../components/tasks/AddTaskComponent.vue";
-import AddStuffToDevice from "../components/devices/DeviceComponent.vue";
+import StuffComponent from "../components/stuffs/StuffComponent.vue";
 import EditTaskComponent from "../components/tasks/EditTaskComponent.vue";
 
 import ManageDevices from "../components/admin/devices/ManageDevices.vue";
@@ -48,9 +48,9 @@ const routes = [
         },
     },
     {
-        path: "/device/:id/stuff",
-        name: "device.add.stuff",
-        component: AddStuffToDevice,
+        path: "/node/:id/stuff",
+        name: "node.add.stuff",
+        component: StuffComponent,
         props: true,
         meta: {
             title: "Добавить оборудование",

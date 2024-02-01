@@ -6,6 +6,9 @@ import axios from "axios";
 export default function useStuff() {
     const stuff = ref([]);
 
+    const router = useRouter();
+    const toast = useToast();
+
     const getStuff = async (id) => {
         let response = await axios.get("/api/v1/stuff/" + id);
 
@@ -24,6 +27,7 @@ export default function useStuff() {
             try {
                 await axios.post("/api/v1/stuff", data);
                 toast.success("Оборудование успешно добавлено.");
+                await router.push({ name: "main.index" });
             } catch (e) {
                 if (e.response.status === 422) {
                     errors.value = e.response.data.errors;
@@ -33,7 +37,8 @@ export default function useStuff() {
         } else {
             try {
                 await axios.put("/api/v1/stuff/" + id, data);
-                toast.success("Оборудование успешно добавлено.");
+                toast.success("Оборудование успешно обновлено.");
+                await router.push({ name: "main.index" });
             } catch (e) {
                 if (e.response.status === 422) {
                     errors.value = e.response.data.errors;

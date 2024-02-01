@@ -24,7 +24,7 @@ export default function useRecords() {
     const storeRecord = async (data) => {
         try {
             await axios.post("/api/v1/records", data);
-            await router.push({ name: "tasks.index" });
+            await router.push({ name: "main.index" });
             toast.success("Запись успешно добавлена.");
         } catch (e) {
             if (e.response.status === 422) {
@@ -35,7 +35,7 @@ export default function useRecords() {
     const updateRecord = async (id) => {
         try {
             await axios.put("/api/v1/records/" + id, record.value);
-            await router.push({ name: "tasks.index" });
+            await router.push({ name: "main.index" });
             toast.success("Запись успешно обновлена.");
         } catch (e) {
             if (e.response.status === 422) {

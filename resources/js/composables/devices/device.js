@@ -52,7 +52,6 @@ export default function useDevice() {
     return {
         device,
         devices,
-        isEmpty,
         errors,
         deviceId,
         deviceErrors,

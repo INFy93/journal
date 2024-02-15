@@ -27,16 +27,23 @@ export default {
 
     setup(props) {
 
-        const { getStuff, stuff, isEmpty } = useStuff();
+        const { getStuff, storeStuff, stuff, isEmpty, errors } = useStuff();
 
         onMounted(async () => {
             await getStuff(props.id);
+            stuff.value.node_id = props.id;
         }
         )
 
+        const saveStuff = async (id) => {
+            await storeStuff(id, { ...stuff.value })
+        }
+
         return {
+            saveStuff,
             stuff,
-            isEmpty
+            isEmpty,
+            errors
         }
     }
 }

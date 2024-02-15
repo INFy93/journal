@@ -5,6 +5,8 @@ import axios from "axios";
 
 export default function useStuff() {
     const stuff = ref([]);
+    const errors = ref("");
+    const isEmpty = ref(false);
 
     const router = useRouter();
     const toast = useToast();
@@ -15,7 +17,7 @@ export default function useStuff() {
         stuff.value = response.data.data;
 
         if (!Object.keys(stuff.value).length) {
-            stuff.value.device_id = id;
+            stuff.value.node_id = id;
             stuff.value.stuff = "Ящик";
             isEmpty.value = true;
         }
@@ -36,7 +38,7 @@ export default function useStuff() {
             }
         } else {
             try {
-                await axios.put("/api/v1/stuff/" + id, data);
+                await axios.put("/api/v1/stuff/" + id, stuff.value);
                 toast.success("Оборудование успешно обновлено.");
                 await router.push({ name: "main.index" });
             } catch (e) {
@@ -50,6 +52,8 @@ export default function useStuff() {
 
     return {
         stuff,
+        errors,
+        isEmpty,
         getStuff,
         storeStuff,
     };

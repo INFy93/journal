@@ -10,9 +10,9 @@ class Stuff extends Model
     use HasFactory;
 
     protected $fillable = [
-        'device_id',
+        'node_id',
         'stuff'
     ];
 
-    public $timestamps = false;
+   // public $timestamps = false;
 }

@@ -26,7 +26,6 @@ class RecordRequest extends FormRequest
             'node_id' => ['required'],
             'user_id' => ['required'],
             'goals' => ['nullable', 'string'],
-            'task' => ['required'],
             'consumables' => ['nullable', 'string']
         ];
     }
@@ -37,7 +36,6 @@ class RecordRequest extends FormRequest
             'device_id.required' => 'Необходимо выбрать устройство',
             'node_id.required' => 'Ошибка в получении ID ноды',
             'user_id.required' => 'Необходимо выбрать пользователя',
-            'task.required' => 'Необходимо написать, что было сделано'
         ];
     }
 }

@@ -22,7 +22,7 @@ class StuffRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'device_id' => ['required', 'integer'],
+            'node_id' => ['required', 'integer'],
             'stuff' => ['required']
         ];
     }

@@ -7,12 +7,14 @@ window.Alpine = Alpine;
 Alpine.start();
 
 import { createApp } from "vue";
+
 import router from "./router/router.js";
 
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
 const app = createApp({});
+app.config.compilerOptions.whitespace = "preserve";
 
 //toast options
 const options = {

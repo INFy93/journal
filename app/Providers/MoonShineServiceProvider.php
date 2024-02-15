@@ -10,6 +10,7 @@ use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
 use MoonShine\Resources\MoonShineUserResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
+use App\MoonShine\Resources\CityResource;
 
 class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 {
@@ -36,6 +37,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                    new MoonShineUserRoleResource()
                ),
             ]),
+
+            MenuItem::make('Нас. пункты', new CityResource()),
 
             MenuItem::make('Documentation', 'https://moonshine-laravel.com')
                ->badge(fn() => 'Check'),

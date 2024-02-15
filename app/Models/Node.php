@@ -18,8 +18,8 @@ class Node extends Model
 
     public $timestamps = false;
 
-    public function city(): HasOne
+    public function city(): BelongsTo
     {
-        return $this->hasOne(City::class, 'id');
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }

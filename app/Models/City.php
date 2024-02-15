@@ -17,10 +17,6 @@ class City extends Model
 
     public $timestamps = false;
 
-    public function nodes(): HasMany
-    {
-        return $this->hasMany(Node::class);
-    }
 
  public function stuffs(): HasManyThrough
     {
@@ -44,6 +40,11 @@ class City extends Model
             'id', //локальный ключ в родной модели
             'id' //локальный ключ в модели Node. ETO PIZDEC
         )->orderBy('created_at', 'desc');
+    }
+
+    public function nodes(): HasMany
+    {
+        return $this->hasMany(Node::class, 'city_id', 'id');
     }
 
     public function scopeSearch($query, $term)

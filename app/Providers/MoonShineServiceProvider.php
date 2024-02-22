@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\DevicesResource;
 use App\MoonShine\Resources\NodesResource;
+use MoonShine\Menu\MenuDivider;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -30,6 +32,12 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
         return [
             MenuItem::make('Нас. пункты', new CityResource()),
             MenuItem::make('Узлы', new NodesResource()),
+            MenuItem::make('Устройства', new DevicesResource()),
+
+            MenuDivider::make(),
+
+            MenuItem::make('Журнал', '/'),
+
             MenuGroup::make(static fn() => __('moonshine::ui.resource.system'), [
                MenuItem::make(
                    static fn() => __('moonshine::ui.resource.admins_title'),

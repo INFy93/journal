@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Device extends Model
 {
@@ -27,6 +28,11 @@ class Device extends Model
         return $this->hasOne(Stuff::class)->withDefault([
             'stuff' => 'Ящик',
         ]);
+    }
+
+    public function nodeMoonshine(): BelongsTo
+    {
+        return $this->belongsTo(Node::class, 'node_id', 'id');
     }
 
 }

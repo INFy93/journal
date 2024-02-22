@@ -22,6 +22,8 @@ class NodesResource extends ModelResource
 
     protected string $title = 'Узлы';
 
+    public string $column = 'node_name';
+
     protected string $sortDirection = 'ASC'; // Тип сортировки по умолчанию
 
     protected bool $createInModal = true;

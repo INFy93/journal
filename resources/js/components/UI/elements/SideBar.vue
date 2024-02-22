@@ -36,7 +36,7 @@
                         </div>
                     </li>
                     <li>
-                        <router-link :to="{ name: 'manage.devices' }"
+                        <a href="/admin"
                             class="relative flex flex-row items-center pr-6 border-l-4 border-transparent h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white hover:border-blue-500 dark:hover:border-gray-800">
                             <span class="inline-flex items-center justify-center ml-4">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -48,7 +48,7 @@
 
                             </span>
                             <span class="ml-1 text-sm tracking-wide truncate">Настройки</span>
-                        </router-link>
+                        </a>
                     </li>
                     <li>
                         <router-link :to="{ name: 'manage.users' }"
